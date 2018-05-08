@@ -1,0 +1,28 @@
+﻿<div class="modal-content panel-outline-content">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="$confmodal.cancel()"><i class="glyphicon glyphicon-remove close-icon"></i></button>
+        <h3 class="panel-modal-title" id="modal-title" ng-model="$confmodal.title">{{$confmodal.title}}</h3>
+    </div>
+    <div>
+        <div ng-if="!$confmodal.centered" class="modal-inner-box-confirmation">
+            <div>
+                <span class="prod-right conf-message">
+                    {{$confmodal.message}} <span class="text-danger"><strong>{{$confmodal.name}}</strong></span>
+                </span>
+            </div>
+        </div>
+   
+        <div ng-if="$confmodal.centered" class="modal-inner-box-confirmation" style="text-align:center;">
+            <div>
+                <span class="prod-right conf-message">
+                    {{$confmodal.message}} <span class="text-danger"><strong>{{$confmodal.name}}</strong></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer-conf" style="text-align:center">
+        <button ng-show="!$confmodal.info" class="btn btn-yes" type="button" ng-click="$confmodal.confirm()">Yes</button>
+        <button ng-show="!$confmodal.info" class="btn btn-danger" type="button" ng-click="$confmodal.cancel()">No</button>
+        <button ng-show="$confmodal.info" class="btn btn-close" type="button" ng-click="$confmodal.cancel()">Close</button>
+    </div>
+</div>

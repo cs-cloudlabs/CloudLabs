@@ -1,0 +1,475 @@
+﻿
+@font-face {
+    font-family: 'OpenSans-Regular';
+    src: url('../fonts/OpenSans-Regular.ttf') format('truetype');
+    font-size: 12px;
+}
+
+body, html {
+    font-family: OpenSans-Regular;
+    background-color: #222733;
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+ 
+}
+
+h1, h2, h3{
+    font-family: OpenSans-Regular;
+    font-size: 18px;
+}
+
+p, div, span, input, 
+button, table, tr, th ,td, ul, 
+li, a, label, option, select{
+    font-family: OpenSans-Regular;
+    font-size: 12px;
+}
+
+.header {
+    background-color: #181a1f;
+    height: 57px;
+    width: 100%;
+    padding: 10px;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+
+    .header-logo {
+        background: url("/Content/images/header-logo.png") no-repeat;
+        margin: 5px 20px;
+    }
+
+    span {
+        color: #FFF;
+        font-size: 18px;
+        margin: 70px;
+    }
+}
+
+#wrapper {
+    margin: 0;
+    -moz-transition: margin-left ease .25s;
+    -o-transition: margin-left ease .25s;
+    -webkit-transition: margin-left ease .25s;
+    transition: margin-left ease .25s;
+}
+
+#main {
+    padding-left: 7%;
+    padding-right: 5%;
+    margin-bottom: 8%;
+    margin-top: 4.5%;
+}
+
+.page-title{
+    color: #25a9c0;
+    font-size: 24px;
+}
+
+#sidebar {
+    background-color: #22252c;
+    width: 6.5%;
+    height: 100%;
+    position: fixed;
+    display: block;
+
+    p {
+        color: #fff;
+        font-size: 12px;
+        text-align: center;
+        margin-top: 120%;
+    }
+
+    ul {
+        list-style-type: none !important;
+        margin-left: -2.5em;
+
+        a {
+            &:hover {
+                text-decoration: none;
+            }
+
+            &:active {
+                text-decoration: none;
+            }
+        }
+    }
+
+    .dashboard {
+        background: url("/Content/Images/dashboard.png") no-repeat;
+        position: absolute;
+        top: 10%;
+        height: 14%;
+        width: 90%;
+        background-position: center;
+
+        &:hover {
+            background: url("/Content/Images/dashboard-hover.png") no-repeat;
+            height: 14%;
+            background-position: center;
+        }
+    }
+
+    .labprofile {
+        background: url("/Content/Images/cloudlabs.png") no-repeat;
+        position: absolute;
+        top: 30%;
+        height: 14%;
+        width: 90%;
+        background-position: center;
+
+        &:hover {
+            background: url("/Content/Images/cloudlabs-hover.png") no-repeat;
+            height: 14%;
+            background-position: center;
+        }
+    }
+
+    .labactivity {
+        background: url("/Content/Images/labactivities.png") no-repeat;
+        position: absolute;
+        top: 50%;
+        height: 14%;
+        width: 90%;
+        background-position: center;
+
+        &:hover {
+            background: url("/Content/Images/labactivities-hover.png") no-repeat;
+            height: 14%;
+            background-position: center;
+        }
+    }
+
+    .usermanagement {
+        background: url("/Content/Images/usermanagement.png") no-repeat;
+        position: absolute;
+        top: 70%;
+        height: 14%;
+        width: 90%;
+        background-position: center;
+
+        &:hover {
+            background: url("/Content/Images/usermanagement-hover.png") no-repeat;
+            height: 14%;
+            background-position: center;
+        }
+    }
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+
+
+
+// start of render 
+
+/*.render-vm-navs {
+    z-index: 100;
+    right: 0;
+    top: 5px;
+    position: absolute;
+    margin-top: 80px;
+    background-color: transparent;
+    opacity: 1;
+    width: 2%;
+}*/
+
+
+.fullscreen-toggle {
+    margin-top: -10px;
+    opacity: 1;
+}
+
+.render-vm-navs img {
+    width: 30px;
+}
+
+.render-vm-navs ul {
+    min-height: 0px;
+}
+
+/*.render-vm-navs li a {
+    padding-right: 3px;
+    padding-left: 3px;
+}*/
+
+.render-vm-navs li.active a {
+    /*border-left-width: 5px !important;*/
+}
+
+.render-vm-navs li.active a:hover {
+    background-color: #DDD;
+    cursor: pointer;
+}
+
+
+
+.render-vm-tabs img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    cursor: pointer;
+}
+
+.render-vm-tabs .dashboard-block {
+    width: 100%;
+    margin-bottom: 0px;
+}
+
+.render-vm-tabs .dashboard-block a {
+    text-decoration: none;
+    width: 100%;
+}
+.render-vm-tabs .dashboard-block a .glyphicon {
+    top: 3px;
+}
+.render-vm-tabs .tab-content {
+    border: none;
+    padding-right: 20px;
+    padding-top: 10px;
+    height: auto;
+    color: #fff;
+    padding-left: 2%;
+    overflow-y:auto;
+}
+
+.render-vm-tabs hr {
+    margin-left: 0px;
+}
+
+.render-vm-tabs ul {
+    padding-left: 20px;
+}
+
+.render-vm-tabs .panel-title {
+    display: inline;
+    margin-left: -20px;
+    padding-left: 9%;
+    padding-top: 10px;
+    padding-right: 55px;
+}
+
+.activityListLink {
+    height: 100%;
+    background-color: #23a7de;
+    width: 10px;
+    z-index: 101;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.user-box {
+    padding: 0px;
+    padding-top: 5px;
+}
+
+textarea {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    resize: none;
+}
+
+
+.glyphicon-resize-full, .glyphicon-resize-small {
+    font-size: 29px;
+    top: 3px;
+}
+
+.advanceActivity {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    max-height: 430px;
+}
+
+.modLabView {
+    background-color: #FFFFFF;
+    padding: 10px;
+}
+
+.remoteNav {
+    background-color: #FFF;
+    border-right-width: 4px;
+    border-right-color: #23a7de;
+    border-right-style: solid;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    min-width: 260px;
+    float: left;
+    overflow-y: scroll;
+}
+
+.remoteLab {
+    background-color: #FFF;
+    border-left-width: 4px;
+    border-left-color: #23a7de;
+    border-left-style: solid;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-left: 264px;
+}
+
+.remoteNameText {
+    position: absolute;
+    z-index: 120;
+    left: 450px;
+}
+
+#searchTextLabRemote{
+    width: 87%;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.remoteNameText h3 {
+    color: #FFF;
+}
+
+.remoteLabThumbnail {
+    padding: 15px;
+    color: #000;
+}
+
+.remoteNav hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.remoteLabThumbnail img {
+    max-height: 120px;
+    display: block;
+    max-width: 212px;
+}
+
+.vetemplate-box .col-xs-4 a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.suggestions{
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: white;
+    border: 1px solid #25a9e0;
+    position: absolute;
+    width: 320px;
+    z-index: 10;
+}
+
+
+.sidebar-nav > .side-menu > a {
+    color: #fff;
+    border-bottom: 1px solid #999;
+    width: 80%;
+    margin-left: 6%;
+}
+
+.sidebar-nav > .side-menu > a:hover {
+   text-decoration: none;
+}
+
+.sidebar-nav > .logout > .logout-btn {
+    color: #999;
+    padding-top:20%;
+}
+
+.sidebar-nav > .logout > .logout-btn {
+    text-decoration: none;
+}
+.render-body-tag {
+    overflow-x: hidden;
+}
+
+.render-body {
+    background-color: #FFF;   
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow:hidden; 
+    width: 100%;
+    height: 100%;
+}
+
+.render-body .tab-multiple {
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+.render-content {
+    border: none;
+    height: auto;
+    width: auto;
+}
+
+.render-content span {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.render-body li {
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
+.close {
+    color: red;
+    opacity: unset;
+    font-size: 16px;
+    text-shadow: unset;
+}
+
+.btn-primary {
+    background-color: #36c !important;
+}
+.btn-primary:hover {
+    background-color: #2a55ab !important;
+}
+.btn-lg {
+    width: 200px;
+    font-size: 15px;
+    border-radius: 6px;
+    height: 40px;
+}
+
+.panel-modal-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 18px !important;
+    color: #25a9c0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: default;
+}
+.panel-outline-content {
+    background-color: #222733;   
+}
+
+.panel-modal-content {
+    position: relative;
+    border: 1px solid #999;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 6px;
+    outline: 0;
+    -webkit-box-shadow: 0 3px 9px rgba(0,0,0,0.5);
+    box-shadow: 0 3px 9px rgba(0,0,0,0.5);
+    background-clip: padding-box;
+}
+
+.panel-sub-name {
+    color: #999;
+}
+

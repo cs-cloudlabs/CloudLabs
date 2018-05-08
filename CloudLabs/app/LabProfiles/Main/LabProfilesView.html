@@ -1,0 +1,79 @@
+﻿
+<div ng-model="base" infinite-scroll="loadMore()" infinite-scroll-distance="0">
+
+    <div class="row search-block">
+        <div class="col-md-12 text-left">
+
+            <div ng-show="!loading" class="right-addon">
+
+                <input class="form-control search-labs" ng-keypress="loadingContent" ng-model="searchEntry" type="text" placeholder="Search Lab Profiles">
+                <i class="glyphicon glyphicon-search right-addon glyph-color"></i>
+                <button href="" class="btn btn-primary btn-lg" id="btn-create-profile" ng-disabled="loadingContent" data-toggle="modal" data-target="#createModal"  ng-click="openCreateModal('create','')">Create Lab Profile</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div ng-show="loadingContent" class="loading-block">
+        <img src="../../../Content/Images/loading-icon.svg" />
+    </div>
+
+    <div ng-show="!loadingContent" class="row" id="">
+        <div ng-show="!searchEntry" ng-repeat="x in profiles | orderBy: Name" id="profile-{{x.VEProfileID}}" class="col-md-3 no-padding">
+            <div class="veprofile-block view-first">
+                <div class="block-image">
+                    <img ng-show="x.ThumbnailURL == NULL || x.ThumbnailURL == ''" class="img-responsive profile-image" ng-src="../../../Content/Images/course-default.png">
+                    <img ng-show="x.ThumbnailURL != NULL || x.ThumbnailURL != ''" class="img-responsive profile-image" ng-src="{{x.ThumbnailURL}}">
+                </div>
+                <div class="block-info info-ve">
+                    <span class="assessment-title" ng-bind="x.Name"></span>
+                    <div>
+                        <span class="assessment-profile" ng-bind="x.Description"></span>
+                    </div>
+                </div>
+                <div class="veprofile-mask">
+                    <div>
+                        <h3 data-toggle="tooltip" data-placement="top" title="{{x.Name}}" ng-bind="x.Name" class="assessment-title-shadow"></h3>
+                    </div>
+                    <div class="ve-btns">
+                        <a href="" class="btn-profile-view" data-toggle="tooltip" title="View" ng-click="openCreateModal('view', $index)"></a>
+                        <a href="" class="btn-profile-edit" data-toggle="tooltip" title="Edit" ng-click="openCreateModal('edit', $index)"></a>
+                        <a href="" class="btn-profile-delete" data-toggle="tooltip" title="Delete" ng-click="openConfirmationModal('delete', x.VEProfileID, x.Name)"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-show="searchEntry" ng-repeat="y in courseIds | orderBy: Name | filter: search " class="col-md-3 no-padding">
+            <div class="veprofile-block view-first">
+                <div class="block-image">
+                    <img ng-show="y.ThumbnailURL == NULL || y.ThumbnailURL == ''" class="img-responsive profile-image" ng-src="Content/Images/course-default.png">
+                    <img ng-show="y.ThumbnailURL != NULL || y.ThumbnailURL != ''" class="img-responsive profile-image" ng-src="{{y.ThumbnailURL}}">
+                </div>
+                <div class="block-info info-ve">
+                    <span class="assessment-title">{{y.Name}}</span><span class="assessment-profile">
+                        {{y.Description}}
+                    </span>
+                </div>
+                <div class="veprofile-mask">
+                    <h3 class="assessment-title-shadow">{{y.Name}}</h3>
+                    <div class="ve-btns">
+                        <a href="" class="btn-profile-view" data-toggle="tooltip" title="View" ng-click="openCreateModal('view', y)"></a>
+                        <a href="" class="btn-profile-edit" data-toggle="tooltip" title="Edit" ng-click="openCreateModal('edit', y)"></a>
+                        <a href="" class="btn-profile-delete" data-toggle="tooltip" title="Delete" ng-click="openConfirmationModal('delete', y.VEProfileID, y.Name)"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-show="loading" class="loading-block">
+    <img src="../../../Content/Images/loading-icon.svg" />
+</div>
+
+<div ng-show="empty && !loading" class="loading-block no-content">
+    <h1>No Lab Profiles Available</h1>
+</div>
+

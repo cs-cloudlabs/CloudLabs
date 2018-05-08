@@ -1,0 +1,87 @@
+﻿<script src="../../Scripts/bootstrap-filestyle.js"></script>
+<div class="modal-content panel-outline-content">
+    <div class="modal-header">
+        <span class="panel-modal-title">{{createEditModalHeader}}</span>
+        <i class="glyphicon glyphicon-remove close col-md-1" ng-click="close()"></i>
+    </div>
+    <div class="modal-body">
+        <div>
+            <form name="myForm" novalidate class="createUserForm">
+                <div class="col-md-6">
+                        <div class="modalFirst panel-sub-name">
+                            <span>First Name <span class="text-danger">*</span><br></span>
+                            <input class="form-control modalTextBox" type="text" name="firstname" value="{{ firstname }}" ng-minlength="1" ng-model="firstname" ng-required="true" autocomplete="off">
+                            <span class="errorMessageFirst" ng-show="myForm.firstname.$dirty  && myForm.firstname.$invalid">
+                                <span ng-show="myForm.firstname.$error.required">Firstname is required</span>
+                            </span>
+                        </div>
+                        <div class="modalLast panel-sub-name">
+                            <span>Last Name <span class="text-danger">*</span><br></span>
+                            <input class="form-control modalTextBox" type="text" name="lastname" value="{{ lastname }}" ng-minlength="1" ng-model="lastname" ng-required="true" autocomplete="off">
+                            <span class="errorMessageLast" ng-show="myForm.lastname.$dirty  && myForm.lastname.$invalid">
+                                <span ng-show="myForm.lastname.$error.required">Last Name is required</span>
+                            </span>
+                        </div>
+                        <div ng-show="isShowCreate" class="modalEmail panel-sub-name">
+                            <span>Email Address <span class="text-danger">*</span><br></span>
+                            <input class="form-control modalTextBox" type="email" name="email" ng-minlength="1" ng-model="email" ng-required="true" ng-pattern="emailPattern" unique autocomplete="off">
+                            <span class="errorMessageEmail" ng-show="myForm.email.$dirty  && myForm.email.$invalid">
+                                <span ng-show="myForm.email.$error.required">Email is required</span>
+                                <span ng-show="myForm.email.$error.unique">Email address already exists</span>
+                                <span ng-show="myForm.email.$error.pattern">Invalid Email Address</span>
+                            </span>
+                        </div>
+                        <div ng-show="!isShowCreate" class="modalEmail panel-sub-name">
+                            <span>Email Address <span class="text-danger"></span><br></span>
+                            <input class="form-control  modalTextBox" ng-disabled="true" type="email" name="email1" value="{{ email1 }}" ng-model="email1" ng-pattern="emailPattern" ng-required="true" autocomplete="off">
+                            <span class="errorMessageEmail" ng-show="myForm.email1.$dirty  && myForm.email1.$invalid">
+                                <span ng-show="myForm.email.$error.required">Email is required</span>
+                                <span ng-show="myForm.email.$error.pattern">Email Address Invalid</span>
+                            </span>
+                        </div>
+                        <div class="modalRole panel-sub-name">
+                            <span style="color:#25A9C0;">Role <span class="text-danger">*</span><br></span>
+                            <select ng-model="role" name="role" ng-options="x for x in roles" ng-required="true"></select>
+                            <span class="errorMessageRole" ng-show="myForm.role.$dirty  && myForm.role.$invalid">
+                                <span ng-show="myForm.role.$error.required">Role is required</span>
+                            </span>
+                        </div>
+                        <div class="modalPassword panel-sub-name" ng-show="showEdit">
+                            <span>Password <span class="text-danger">*</span><br></span>
+                            <input class="form-control  modalTextBox" type={{showOrHidePass}} name="password" id="pw1" value="{{ password }}" ng-model="password" ng-pattern="passPattern" ng-minlength="6" ng-required="true" autocomplete="off">
+                            <i class="glyphicon glyphicon-eye-open password-glyph col-md-1" ng-show="!glyphPass" ng-click="showPass()"></i>
+                            <i class="glyphicon glyphicon-eye-close password-glyph col-md-1" ng-show="glyphPass" ng-click="showPass()"></i>
+                            <span class="errorMessagePass" ng-show="myForm.password.$dirty  && myForm.password.$invalid">
+                                <span ng-show="myForm.password.$error.required">This is required</span>
+                                <span ng-show="myForm.password.$error.minlength">Password must be at least 6 characters</span>
+                            </span>
+                        </div>
+                        <div class="modalConfirmPassword panel-sub-name" ng-show="showEdit">
+                            <span>Re-type Password <span class="text-danger">*</span><br></span>
+                            <input class="form-control modalTextBox" type={{showOrHideConfirmPass}} name="confirmPassword" id="pw2" pw-check="pw1" pwCheck value="{{ confirmPassword }}" ng-model="confirmPassword" ng-pattern="password" autocomplete="off">
+                            <i class="glyphicon glyphicon-eye-open password-glyph col-md-1" ng-show="!glyph" ng-click="showConfirmPass()"></i>
+                            <i class="glyphicon glyphicon-eye-close password-glyph col-md-1" ng-show="glyph" ng-click="showConfirmPass()"></i>
+                            <span class="errorMessageConfirm" ng-show="myForm.confirmPassword.$dirty  && myForm.confirmPassword.$invalid">
+                                <span ng-show="myForm.confirmPassword.$error.pwmatch">Passwords did not match.</span>
+                            </span>
+                        </div>
+                </div>
+            </form>
+
+            <div class="modal-footer" style="padding-bottom: 7%;">
+                <button class="btn btn-info" ng-show="{{isShowCreate}}" type="button" ng-disabled="!(myForm.firstname.$valid && myForm.lastname.$valid && myForm.email.$valid && myForm.role.$valid && myForm.password.$valid && !(myForm.confirmPassword.$error.pwmatch == true))" ng-click="submit(email, role, firstname,  lastname, password, confirmPassword,'Add another', '')" style="position: absolute; width: 25%; left: 13.5%;">Add Another</button>
+                <div ng-if="isShowEdit">
+                    <button class="btn btn-primary" type="button" ng-disabled="!myForm.firstname.$valid || !myForm.lastname.$valid || !myForm.email1.$valid || !myForm.role.$valid" ng-click="submit(email1, role, firstname, lastname, password, confirmPassword,'Edit', id)" style="position: absolute; width: 25%; right: 36%;">{{saveOrCreate}}</button>
+                </div>
+                <div ng-if="isShowCreate">
+                    <button class="btn btn-primary" type="button" ng-click="submit(email, role, firstname,  lastname, password, confirmPassword,'Create', '')" style="position: absolute; width: 25%; right: 36%;"
+                            ng-disabled="!(myForm.firstname.$valid && myForm.lastname.$valid && myForm.email.$valid && myForm.role.$valid && myForm.password.$valid && !(myForm.confirmPassword.$error.pwmatch == true))">
+                        {{saveOrCreate}}
+                    </button>
+                </div>
+                <button class="btn btn-danger" type="button" ng-click="close()" style="position: absolute; width: 25%; right: 10.5%;">Cancel</button>
+            </div>
+
+        </div>
+    </div>
+</div>

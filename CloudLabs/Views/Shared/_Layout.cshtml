@@ -1,0 +1,81 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <meta name="description" content="" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
+
+</head>
+
+<body>
+    <script type="text/javascript">
+        var apiUrl = "@System.Configuration.ConfigurationManager.AppSettings["Cloudswyft.Api"]";
+        var authUrl = '@System.Configuration.ConfigurationManager.AppSettings["CloudSwyftAuthServerUrl"]';
+    </script>
+    @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+    {
+        <div id="sidebar">
+            <ul>
+                <li><a href="@Url.Action("Index","Dashboard")" class="dashboard"></a></li>
+                <li><a href="@Url.Action("Index","LabProfiles")" class="labprofile"></a></li>
+                <li><a href="@Url.Action("Index","LabActivity")" class="labactivity"></a></li>
+                <li><a href="@Url.Action("Index","Usermanagement")" class="usermanagement"></a></li>
+            </ul>
+        </div>
+    }
+    
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/cookies")
+    @RenderSection("scripts", required: false)
+    @RenderSection("PageScripts", false)
+
+    <div id="wrapper">
+        <div class="header">
+            <div class="row">
+                <div class="col-md-6 pull-left">
+                    <div class="header-logo"><span>Cloud Labs</span></div>
+                </div>
+                <div class="col-md-6 pull-right" style="margin: -2% 4.4%;">
+                    <div class="dropdown">
+                        <div class="pull-right login-name dropdown-toggle" style="color:white; top: 2%; position: absolute;right:1%;" data-toggle="dropdown">@CloudSwyft.CloudLabs.Models.CustomUserIdentity.UserDetails().Fullname</div>
+                        @*<img src="@CloudSwyft.CloudLabs.Models.CustomUserIdentity.UserDetails().Thumbnail" id="profilePhotoMainThumb" style="width: 5%;border-radius: 50%;height: 4vh;float: right;margin-right: 1%; cursor:auto;">*@
+                        @*<div class="pull-right col-md-5 edit-container dropdown-menu no-radius" style="cursor:pointer;">
+                            <img src="@CloudSwyft.CloudLabs.Models.CustomUserIdentity.UserDetails().Thumbnail" id="profilePhotoMain" class="image-holder" />
+                            <div class="edit-profile-user">
+                                <p class="truncate edit-profilename-text" id="fullnameMain">@CloudSwyft.CloudLabs.Models.CustomUserIdentity.UserDetails().Fullname</p>
+                                <p class="truncate edit-profile-text" id="roleMain">@CloudSwyft.CloudLabs.Models.CustomUserIdentity.UserDetails().Role</p>
+                                <p class="truncate edit-profile-text" id="emailMain">@CloudSwyft.CloudLabs.Models.CustomUserIdentity.UserDetails().Email</p>
+                            </div>
+                            <hr style="clear: both;">
+                            <div class="footer-btns">
+                                <div class="btn btn-primary btn-md pull-left no-radius" data-toggle="modal" data-target="#editProfile" data-backdrop="static">Edit User Profile</div>
+                                <div class="btn btn-primary btn-md pull-right no-radius" data-toggle="modal" data-target="#changePassword" data-backdrop="static">Change Password</div>
+                            </div>
+                            <div>
+                                <a class="logout" href="@Url.Action("Logout","Account")" title="Logout here">Logout</a>
+                            </div>
+                        </div>*@
+                        <span>
+                            <a class="logout" href="@Url.Action("Logout","Account")" title="Logout here" style="float:right; right: 1%; position: absolute; top: 75%;color:#00cccc;">Logout</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="main" class="container-fluid">
+            @RenderBody()
+        </div>
+
+    </div>
+</body>
+</html>

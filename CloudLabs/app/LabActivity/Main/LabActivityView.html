@@ -1,0 +1,55 @@
+﻿<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">    
+<div on-scroll-to-bottom="loadMore()">
+    <div class="loading-block row" id="loading-block" data-page="1" data-pages="0" ng-if="loader=='true'">
+        <div id="activity{{x.LabActivityID}}" class="col-sm-4 no-padding text-center">
+            <img src="../Content/Images/loading-icon.svg" />
+        </div>
+    </div>
+    <div ng-show="empty && loader=='false'" class="loading-block no-content">
+        <h1>No Lab Activities Available</h1>
+    </div>
+    <div ng-if="loader=='false'">
+        <div class="search-block">
+            <div class="col-sm-8 text-left" id="actTop">
+                <div class="search-content" style="padding-bottom:1%;padding-top:1%">
+                    <input class="form-control search-labs" id="searchText" ng-model="searchText.Name" type="text" list="veList" placeholder="Search Lab Activities">
+                    <span class="glyphicon glyphicon-search search-icon" aria-hidden="true"></span>
+                </div>
+                <datalist id="veList"></datalist>
+            </div>
+
+
+            <div class="col-sm-4 text-right" style="padding-bottom:1%;padding-top:1%">
+                <a class="btn btn-primary btn-lg" id="btn-create-profile" ng-click="openModal('create', x)">Create Lab Activities</a>
+            </div>
+
+        </div>
+
+
+
+        <div ng-repeat="x in labacts | orderBy: 'Name' | filter: searchText" id="profile{{x.LabActivityID}}" class="col-sm-4 no-padding">
+            <div class="labactivity-block view-first">
+                <div class="block-info">
+
+                    <span class="activity-title lab-title">{{x.Name}}</span>
+                    <span class="assessment-profile lab-profile"># of Attached VE Profiles: {{x.UseCount}}</span>
+
+
+
+                </div>
+                <div class="labactivity-mask" data-id={{x.LabActivityID}} data-title="{{x.Name}}">
+
+                    <div class="button-middle">
+                        <div class="labactivity-mask-btn"><a class="btn-activity-view" data-toggle="tooltip" title="View" ng-click="openModal('view', x)"></a></div>
+                        <div class="labactivity-mask-btn"><a class="btn-activity-edit" data-toggle="tooltip" title="Edit" ng-click="openModal('edit', x)"></a></div>
+                        <div class="labactivity-mask-btn" ng-if="x.UseCount==0"><a class="btn-activity-delete" data-toggle="tooltip" title="Delete" ng-click="openModal('delete', x)"></a></div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+

@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+@section scripts{
+
+    <script src="~/app/RegisterPage/app-register.js"></script>
+    <script src="~/app/RegisterPage/RegisterController.js"></script>
+}
+
+<link href="~/Content/login.css" rel="stylesheet" />
+
+<div ng-app="app-register">
+    <div ng-view class="col-md-6 right-cont"></div>
+</div>

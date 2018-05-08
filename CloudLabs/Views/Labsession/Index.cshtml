@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Lab Session";
+    ViewBag.headerTitle = "CLOUDSWYFT";
+    //Layout = "~/Views/Shared/_LayoutCandidate.cshtml";
+}
+
+@section scripts{
+
+    <script type="text/javascript" src="~/app/LabSession/Main/app-labsession.js"></script>
+    <script type="text/javascript" src="~/app/LabSession/Main/LabSessionController.js"></script>
+    <script type="text/javascript" src="~/app/LabSession/RenderPage/RenderPageController.js"></script>
+    <script src="~/app/LabSession/RenderPage/ViewRenderImageController.js"></script>
+    <script src="~/app/LabSession/RenderPage/UserNotificationController.js"></script>
+    <script src="~/Scripts/textAngular/textAngular-rangy.min.js"></script>
+    <script src="~/Scripts/angular-sanitize/textAngular-sanitize.min.js"></script>
+    <script src="~/Scripts/textAngular/textAngular.min.js"></script>
+    <link href="~/Content/textAngular.css" rel="stylesheet" />
+    <link href="~/Content/labsession.css" rel="stylesheet" />
+    <link href="~/Content/render.less" rel="stylesheet" />
+
+}
+
+<h2 class="page-title" style="color:white">Cloud Lab Sessions</h2>
+<div class="container-fluid" style="overflow-y:hidden;" ng-app="app-labsession">
+    <div ng-view></div>
+</div>

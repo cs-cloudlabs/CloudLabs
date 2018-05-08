@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Lab Activity";
+    ViewBag.headerTitle = "CLOUDSWYFT";
+    //Layout = "~/Views/Shared/_LayoutCandidate.cshtml";
+}
+
+@section scripts{
+
+    <script type="text/javascript" src="~/app/LabActivity/Main/app-labactivity.js"></script>
+    <script type="text/javascript" src="~/app/LabActivity/Main/LabActivityController.js"></script>
+    <script src="~/app/LabActivity/Modal/labActivityModalController.js"></script>
+    <script type="text/javascript" src="~/app/LabActivity/Modal/confirmationModalController.js"></script>
+    <script type="text/javascript" src="~/Scripts/tinymce/tinymce/tinymce.js"></script>
+    <script type="text/javascript" src="~/Scripts/tinymce/angular-ui-tinymce/src/tinymce.js"></script>
+    <script type="text/javascript" src="~/Scripts/textAngular-sanitize/textAngular-rangy.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/textAngular-sanitize/textAngular-sanitize.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/textAngular-sanitize/textAngular.min.js"></script>
+    @*<script type="text/javascript" src="~/Scripts/angular/angular.min.js"></script>*@
+    
+   <link href="~/Content/labAct.css" rel="stylesheet" />
+   
+
+    
+}
+ <h1 class="page-title">Lab Activities</h1>
+
+
+    <div class="container-fluid" style="overflow-y:hidden;" ng-app="app-labactivity">
+        <div ng-view></div>
+    </div>
+
+    

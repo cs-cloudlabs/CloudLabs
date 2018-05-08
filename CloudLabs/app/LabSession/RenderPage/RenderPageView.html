@@ -1,0 +1,52 @@
+﻿<div class="modal-body no-padding">
+    <div  ng-mouseenter="focusMove()" class="modal-header no-padding">        
+        <button type="button" class="close" ng-click="close()"><i class="glyphicon glyphicon-remove"></i></button>
+        <iframe id="iRender" class="intrinsic-container" width="100%" ng-src="{{ guacamoleUrl }}" sandbox="allow-top-navigation allow-same-origin allow-scripts allow-forms" ng-mouseover="focus('iRender')" event-focus="mouseover" event-focus-class="iRender" allowfullscreen></iframe>
+    </div>
+    <div id="labactivitycontainer" ng-switch=showLabActivities>
+        <div ng-switch-when=true class="right-side-panel" ng-click="clickedLab()">
+            <p><img class="keep-right" src="../../../Content/Images/icon-act-lab.png" width="45%" /></p>
+        </div>
+        <div ng-switch-when=false class="labActContainer">
+            <div class="right-side-open" ng-click="clickedLab()">
+                L<br />a<br />b<br />
+                <br />
+                A<br />c<br />t<br />i<br />v<br />i<br />t<br />y
+            </div>
+            <div class="labHeader">
+                <h4>Lab Activities</h4>
+            </div>
+            <div id="divID" scroll-to-top-when="items_changed" class="contentHeight">               
+                <div  id="Content" scroll-to-top-when="items_changed" class="Content" ng-repeat="task in tasks track by $index" model="testing" ng-show="$index == index">
+                    <div >
+                        <span text-angular ta-unsafe-sanitizer="true" class="labActWidth" ta-bind ng-model="task.TaskDetails">
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-footer customFooter col-md-12">
+                    <div ng-show="index != 0" class=" col-md-4">
+                        <button class="btn btn-success btnWidth " ng-click="btnPrev()">Back</button>
+                    </div>
+                    <div ng-show="index == 0" class=" col-md-4">
+
+                    </div>
+                    <div class="page-title col-md-3">
+                        <span>{{index + 1}} of {{tasks.length}}</span>
+                    </div>
+
+                    <div class=" col-md-4">                        
+                        <button class="close"></button>
+                        <button ng-show="index != tasks.length - 1" class="btn btn-success btnWidth" ng-click="btnNext()">Next</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function viewImage(src) {
+        angular.element(document.getElementById('divID')).scope().viewImage(src);
+    }
+</script>

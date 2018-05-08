@@ -1,0 +1,24 @@
+﻿<div ng-show="loading" class="loading-block">
+    <img src="../../../Content/Images/loading-icon.svg" />
+</div>
+
+<div ng-show="loading2" class="loading-block">
+    <img src="../../../Content/Images/loading-icon2.svg" />
+</div>
+<div ng-show="empty && !loading" class="loading-block no-content">
+    <h1>No Courses Enrolled</h1>
+</div>
+
+
+<div ng-show="!loading && !loading2" ng-repeat="c in labs" class="col-md-4 courseContainer" style="padding-bottom:10px;">
+    <div class="veprofileContainer" ng-mouseover="showStartLab($index)" ng-mouseleave="hideStartLab($index)">
+        <div class="container-fluid col-md-6" style="float:left; padding-bottom : 0px">
+            <img class="testTypeimg" src="/Content/images/tag-lab.png">
+        </div>
+        <div class="container-fluid col-md-12" style="float:left; padding: 0px">
+            <p class="courseName">{{c.Name}}</p>
+        </div>
+        <div class="bgStartLab" ng-if="showLabStart[$index]"></div>
+        <button ng-if="showLabStart[$index]" type="button" class="btnStartLab btn btn-success" ng-click="openLab(c)">Start Cloud Lab Session</button>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Lab Profiles";
+    ViewBag.headerTitle = "Lab Profiles";
+}
+
+
+@section scripts{
+
+    <script type="text/javascript" src="~/app/LabProfiles/Main/app-labprofiles.js"></script>
+    <script type="text/javascript" src="~/app/LabProfiles/Main/LabProfilesController.js"></script>
+    <script src="~/app/LabProfiles/Modal/CreateModalController.js"></script>
+    <script src="~/app/Common/ConfirmationModalController.js"></script>
+    <script src="~/app/LabProfiles/Modal/ActivityViewController.js"></script>
+    <script src="~/Scripts/angular-draganddrop/angular-drag-and-drop-lists.min.js"></script>
+    <script src="~/Scripts/slick.min.js"></script>
+    <script src="~/Scripts/angular-slick.min.js"></script>
+    <script src="~/Scripts/ng-infinite-scroll/ng-infinite-scroll.min.js"></script>
+    <script src="~/Scripts/textAngular/textAngular-rangy.min.js"></script>
+    <script src="~/Scripts/angular-sanitize/textAngular-sanitize.min.js"></script>
+    <script src="~/Scripts/textAngular/textAngular.min.js"></script>
+    <link href="~/Content/textAngular.css" rel="stylesheet" />
+    <link href="~/Content/slick-theme.less" rel="stylesheet" />
+    <link href="~/Content/slick.less" rel="stylesheet" />
+
+    <link href="~/Content/labprofiles.css" rel="stylesheet" />
+}
+
+<h1 class="page-title">Lab Profiles</h1>
+<div class="container-fluid" style="overflow-x:hidden;" ng-app="app-labprofiles">
+    <div ng-view></div>
+</div>

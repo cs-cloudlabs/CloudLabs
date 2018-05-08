@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Lab Activity View";
+}
+
+<br />
+<div class="loading-block modLabView" id="loading-block">
+
+</div>
+
+<script>
+    var activityId = @ViewBag.ActivityId;
+    var veProfileId = @ViewBag.VeProfileId;
+</script>
+
+<script src="@Url.Content("~/Scripts/Views/modactivity.js?v=3")" type="text/javascript"></script>
